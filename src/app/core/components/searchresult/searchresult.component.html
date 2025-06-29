@@ -45,19 +45,18 @@
             class="relative flex flex-row justify-between mx-auto md:flex-col w-full max-w-md bg-white hover:border border-gray-300">
                 <a [routerLink]="['/categories','product',product.id]" class="w-[50%] sm:w-[40%] md:w-full overflow-hidden">
                     <img 
-                    [ngClass]="{'rounded-t-lg transition-all duration-500 hover:scale-110 grayscale':product.stock=='Out of stock',
-                    'rounded-t-lg transition-all duration-500 hover:scale-110':product.stock=='In stock'}" 
+                    [ngClass]="'rounded-t-lg transition-all duration-500 hover:scale-110'" 
                     [src]="product.images[0]" 
-                    [alt]="product.title" />
+                    [alt]="product.name" />
                 </a>
                 
                 <div class="flex flex-col justify-stretch self-center p-5 w-[60%] md:w-full">
                     <a [routerLink]="['/categories','product',product.id]">
-                        <h5 class="mb-2 font-semibold text-sm tracking-tight text-gray-900 dark:text-white ">{{product.title}}</h5>
+                        <h5 class="mb-2 font-semibold text-sm tracking-tight text-gray-900 dark:text-white ">{{product.name}}</h5>
                     </a>
                     <p class="text-sm text-gray-700 dark:text-gray-400">
                        <span class="font-bold mr-3">&#8377;{{product.price}}</span> 
-                       <span class="line-through mr-3">&#8377;{{product.prevprice}}</span> 
+                       <!-- <span class="line-through mr-3">&#8377;{{product.prevprice}}</span>  -->
                        <!-- <span class="p-1 text-xs font-bold bg-green-200 text-green-700 rounded" *ngIf="product.prevprice!==0">{{discount}}% OFF</span>  -->
                     </p>
                     <p class="flex items-center">
@@ -68,7 +67,7 @@
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-regular fa-star"></i>
                         </span>
-                        <span class="ml-2 text-xs">({{product.rating.count}})</span>
+                        <span class="ml-2 text-xs">({{product.reviews.length}})</span>
                     </p>
                     
                     <!-- <button 
@@ -105,14 +104,18 @@
                     
         
                     <div class="absolute top-2 left-5 md:right-5 flex justify-end gap-4 items-center">        
-                        <span *ngIf="product.stock=='In stock'; else outofstock" class="w-[80px] bg-green-600 text-white text-center text-xs p-1 rounded">
+                        <!-- <span *ngIf="product.stock=='In stock'; else outofstock" class="w-[80px] bg-green-600 text-white text-center text-xs p-1 rounded">
                             {{product.stock}}
-                        </span>
-                        <ng-template #outofstock>
+                        </span> -->
+                        <!-- <ng-template #outofstock>
                             <span class="w-[80px] bg-yellow-600 text-white text-center text-xs p-1 rounded" >
                             {{product.stock}}
                             </span>
-                        </ng-template>
+                        </ng-template> -->
+
+                        <span class="w-[80px] bg-green-600 text-white text-center text-xs p-1 rounded">
+                            In stock
+                        </span>
                         
                         <button 
                         aria-label="add to wishlist"

@@ -17,6 +17,7 @@ import { SearchresultComponent } from './core/components/searchresult/searchresu
 import { SearchComponent } from './core/layout/components/header/search/search.component';
 import { AuthinterceptorService } from './shared/services/auth/authinterceptor.service';
 import { SharedModule } from './shared/shared.module';
+import { ChatboxComponent } from './core/components/home/chatbox.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,8 @@ import { SharedModule } from './shared/shared.module';
     CartitemComponent,
     Page404Component,
     SearchresultComponent,
-    SearchComponent
+    SearchComponent,
+    ChatboxComponent
   ],
   imports: [
     BrowserModule,

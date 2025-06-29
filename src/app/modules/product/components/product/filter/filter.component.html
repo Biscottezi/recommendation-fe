@@ -95,7 +95,7 @@
     <div class="" *ngFor="let category of filterCategories">
       <div class="flex items-center pl-4 rounded dark:border-gray-700">
         <input
-          [checked]="category.checked"
+          [checked]="true"
           id="category-checked"
           type="checkbox"
           (change)="applyFilter(category.id,'category')"
@@ -106,7 +106,7 @@
           for="category-checked"
           class="w-full py-2 ml-2 text-sm font-semibold text-gray-900 dark:text-gray-300"
         >
-          {{ category.label }}
+          mock category
         </label>
       </div>
     </div>

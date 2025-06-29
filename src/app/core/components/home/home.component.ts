@@ -5,10 +5,16 @@ import { ProductService } from 'src/app/modules/product/services/product.service
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styles: [
-  ]
+  styles: [`
+    .scroll-container {
+      height: 80vh;
+      overflow-y: scroll;
+    }
+  `]
 })
+
 export class HomeComponent implements OnInit{
+
   products:Product[]=[];
   skeletons:number[]=[...new Array(6)];
   error!:string;
@@ -25,20 +31,34 @@ export class HomeComponent implements OnInit{
 
   ];
 
-  constructor(private _productService:ProductService){
-  }
+  page = 1;
+
+  constructor(private _productService:ProductService) {}
+
   ngOnInit(): void {
    this.newArrivalProducts();
   }
+
   newArrivalProducts(){
-    this.isLoading=true;
-    const startIndex=Math.round(Math.random()*20);
-    const lastIndex=startIndex+6;
-    this._productService.get.subscribe(data=>{
-      this.isLoading=false;
-      this.products=data.slice(startIndex,lastIndex);
-    },
-    error=>this.error=error.message
+    this.isLoading = true;
+    // const startIndex = Math.round(Math.random()*20);
+    // const lastIndex = startIndex+6;
+    this._productService.get(this.page).subscribe((data: Product[]) => {
+        this.isLoading = false;
+        this.products = data;
+      },
+      error => this.error = error.message
+    );
+  }
+
+  loadMoreProducts() {
+    this.isLoading = true;
+    this.page++;
+    this._productService.get(this.page).subscribe((data: Product[]) => {
+        this.isLoading = false;
+        this.products = [...this.products, ...data];
+      },
+      error => this.error = error.message
     );
   }
 }

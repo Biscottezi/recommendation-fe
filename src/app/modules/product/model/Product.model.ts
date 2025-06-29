@@ -1,23 +1,29 @@
-
 export interface Product {
-    id:number;
-    title:string;
-    description: string;
-    category: string;
-    type: string;
-    sizes?: string[];
-    size?:string;
-    images: string[];
-    stock: string;
-    price: number;
-    prevprice:number;
-    qty?:number;
-    discount?:number;
-    totalprice?:number;
-    rating: {
-      rate: number;
-      count: number;
-    }
+  id: string;
+  url: string;
+  name: string;
+  description: string;
+  average_rating: number;
+  price: number;
+  images: Image[];
+  reviews: Review[];
+  totalprice?: number;
+  qty?: number;
 }
 
+export interface Image {
+  id: number;
+  url: string;
+  small_url: string[];
+  medium_url: string[];
+  large_url: string[];
+}
 
+export interface Review {
+  id: number;
+  url: string;
+  title: string;
+  content: string;
+  timestamp: number;
+
+}

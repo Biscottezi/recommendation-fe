@@ -3,14 +3,14 @@
         <div class="relative flex flex-row justify-between mx-auto md:flex-col max-w-sm">
             <img class="rounded-t-lg" 
             [src]="item.images[0]" 
-            [alt]="item.title" />
+            [alt]="item.name" />
         </div>
     </div>
     <div class="col-span-2 lg:col-span-2 pt-2 pr-2">
         <p 
         class="font-semibold text-gray-700 text-ellipsis overflow-hidden whitespace-nowrap" 
-        [title]="item.title">
-        {{item.title}}
+        [title]="item.name">
+        {{item.name}}
         </p>
         <p 
         class="text-sm text-gray-700 text-ellipsis overflow-hidden whitespace-nowrap"
@@ -18,11 +18,11 @@
         >
             {{item.description}}
         </p>
-        <p class="text-sm" *ngIf="item.size">Size: {{item&&item.size}}</p>
+        <!-- <p class="text-sm" *ngIf="item.size">Size: {{item&&item.size}}</p> -->
         <p class="text-sm">
-            <span class="text-gray-700 mr-2">Product: {{item.type}}</span>
-            <span class="font-semibold text-green-700" *ngIf="item.stock=='In stock'">{{item.stock}}</span> 
-            <span class="font-semibold text-yellow-700" *ngIf="item.stock=='Out of stock'">{{item.stock}}</span> 
+            <!-- <span class="text-gray-700 mr-2">Product: {{item.type}}</span> -->
+            <span class="font-semibold text-green-700">In stock</span> 
+            <!-- <span class="font-semibold text-yellow-700" *ngIf="item.stock=='Out of stock'">{{item.stock}}</span>  -->
         </p>
 
         <p class="font-semibold">&#8377;{{item.price}}</p>

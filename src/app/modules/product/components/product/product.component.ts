@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { ActivatedRoute, Params } from '@angular/router';
-import { CategoryFilter, Product } from '../../model';
+import { Category, Product } from '../../model';
 import { FilterService } from '../../services/filter.service';
 import { BehaviorSubject, Subscription } from 'rxjs';
 
@@ -32,31 +32,39 @@ export class ProductComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.getProductsByCategory();
+    //this.getProductsByCategory();
     this.handleFilter();
   }
 
   getProductsByCategory(): Product[] {
     this.isLoading = true;
-    this.route.params.subscribe((data: Params) => {
-      this.category = data['category'];
-      this.ratingList=[false,false,false,false];
-      this.resetFilter();
-      this.productService.getByCategory(this.category).subscribe((data)=>{
-        this.isLoading = false;
-        this.products = data;
-        this.cloneOfProducts=data;
-        this.filterService.filterProduct(data);
-      },
-      (error)=>this.error=error.message
-      );
-      this.filterService.getProductTypeFilter(this.category);
+    // this.route.params.subscribe((data: Params) => {
+    //   this.category = data['category'];
+    //   this.ratingList=[false,false,false,false];
+    //   this.resetFilter();
+    //   this.productService.getByCategory(this.category).subscribe((data)=>{
+    //     this.isLoading = false;
+    //     this.products = data;
+    //     this.cloneOfProducts=data;
+    //     this.filterService.filterProduct(data);
+    //   },
+    //   (error)=>this.error=error.message
+    //   );
+    //   this.filterService.getProductTypeFilter(this.category);
+    // });
+
+    this.productService.get(1).subscribe((data: Product[]) => {
+      this.isLoading = false;
+      this.products = data;
+      this.cloneOfProducts = data;
+      this.filterService.filterProduct(data);
     });
 
     return this.products;
   }
+
   handleFilter() {
-    this.subsFilterProducts=this.filterService.filteredProducts.subscribe((data) => {
+    this.subsFilterProducts = this.filterService.filteredProducts.subscribe((data) => {
       this.products = data
     });
   }

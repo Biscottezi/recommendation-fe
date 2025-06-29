@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "https://apiv2-production-ef00.up.railway.app",
+    "secure": true,
+    "changeOrigin": true
+  }
+}

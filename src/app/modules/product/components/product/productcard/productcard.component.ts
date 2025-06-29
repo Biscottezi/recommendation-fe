@@ -22,8 +22,8 @@ export class ProductcardComponent implements OnInit  {
 
   ngOnInit(): void {
     this.cart=this.cartService.getCart;
-    this.discount=this.product&&Math.round(100-(this.product.price/this.product.prevprice)*100);
-    this.getRatingStar();
+    //this.discount=this.product&&Math.round(100-(this.product.price/this.product.prevprice)*100);
+    //this.getRatingStar();
   }
 
   addToCart(product:Product){
@@ -38,8 +38,8 @@ export class ProductcardComponent implements OnInit  {
     return this.cart.some(item=>item.id==product.id);
   }
   
-  getRatingStar(){
-    this.ratingList=this.productService.getRatingStar(this.product);
-  }
+  // getRatingStar(){
+  //   this.ratingList=this.productService.getRatingStar(this.product);
+  // }
 
 }

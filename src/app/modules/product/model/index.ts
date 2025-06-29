@@ -1,7 +1,9 @@
-import {Product} from './Product.model';
-import { CategoryFilter } from './Category.model';
+import { Product } from './Product.model';
+import { Category } from './Category.model';
+import { User } from './User.nodel';
 
 export {
     Product,
-    CategoryFilter
+    Category,
+    User
 }

@@ -9,24 +9,27 @@ import { ProductService } from 'src/app/modules/product/services/product.service
   styles: [
   ]
 })
+
 export class SearchresultComponent implements OnInit{
-  products:Product[]=[];
+
+  products: Product[] = [];
   isLoading = false;
-  error!:string;
-  searchKeyword!:string;
+  error!: string;
+  searchKeyword!: string;
   constructor(private productService:ProductService, private route:ActivatedRoute){
   }
   ngOnInit(): void {
     this.getResults();
   }
+
   getResults(){
     this.isLoading = true;
     this.route.queryParams.subscribe((params:Params)=>{
-      this.searchKeyword=params['q'];
+      this.searchKeyword = params['q'];
       this.productService.search(params['q']).subscribe((data)=>{
       this.isLoading = false;
-      this.products=data
-    },error=>this.error=error.message)
+      this.products = data
+    },error=>this.error = error.message)
     })
   }
   

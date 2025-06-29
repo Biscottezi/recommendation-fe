@@ -1,0 +1,21 @@
+<div class="chatbox-container" [class.open]="isOpen">
+  <div class="chatbox-header" (click)="toggleChat()">
+    <span>Chat</span>
+    <span class="toggle-btn">{{ isOpen ? '−' : '+' }}</span>
+  </div>
+  <div class="chatbox-body" *ngIf="isOpen">
+    <div class="chatbox-messages">
+      <div *ngFor="let msg of messages"
+           class="chatbox-message"
+           [ngClass]="{'user-message': msg.isUser, 'bot-message': !msg.isUser}"
+           (click)="onMessageClick(msg)"
+           [style.cursor]="!msg.isUser && msg.productId ? 'pointer' : 'default'">
+        {{ msg.content }}
+      </div>
+    </div>
+    <div class="chatbox-input">
+      <input [(ngModel)]="newMessage" (keyup.enter)="sendMessage()" placeholder="Type a message..." />
+      <button (click)="sendMessage()">Send</button>
+    </div>
+  </div>
+</div>

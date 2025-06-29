@@ -1,4 +1,4 @@
-
-export const environment={
-    baseAPIURL:'https://anish-mockapi.onrender.com/'
-}
+export const environment = {
+  production: false,
+  apiUrl: '/api'
+};

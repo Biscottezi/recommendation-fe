@@ -54,33 +54,33 @@
     <div class="col-span-1 md:col-span-1 md:px-6 lg:px-10 py-4">
         <h4 class="text-lg text-gray-600">Brand Name</h4>
         <h3 class="font-bold text-2xl">{{title}}</h3>
-        <p class="text-sm text-gray-600">{{product.type}}</p>
+        <!-- <p class="text-sm text-gray-600">mock type</p> -->
 
         <div class="flex items-center my-3">
-          <span class="text-md mr-2">{{product.rating.rate}}</span>
+          <span class="text-md mr-2">{{product.average_rating}}</span>
           <span *ngFor="let ratestar of ratingList">
             <i class="fa-solid fa-star text-orange-400" *ngIf="ratestar"></i>
           </span>
           <span *ngFor="let ratestar of ratingList">
             <i class="fa-regular fa-star text-orange-400" *ngIf="!ratestar" ></i>
           </span>
-          <span class="ml-2 text-md">{{product.rating.count}} Reviews</span>
+          <span class="ml-2 text-md">{{product.reviews.length}} Reviews</span>
         </div>
 
         <div>
           <p class="leading-relaxed text-gray-700">
             {{product.description}}.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor vero laudantium error porro voluptatibus animi aliquid autem, iste iusto facere? Laborum reprehenderit minima officia voluptate et quod. Dolorem, repellat quia!
+            <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor vero laudantium error porro voluptatibus animi aliquid autem, iste iusto facere? Laborum reprehenderit minima officia voluptate et quod. Dolorem, repellat quia! -->
           </p>
         </div>
 
-        <div class="flex">
+        <!-- <div class="flex">
           <p class="mt-4 text-2xl font-bold">&#8377;{{product.price}}</p>
           <p class="ml-4 mt-4 text-2xl text-gray-600 line-through" *ngIf="product.prevprice!==0">&#8377;{{product.prevprice}}</p>
           <p class="ml-4 mt-5 text-xl text-red-700" *ngIf="product.prevprice!==0">-{{discount}}%</p> 
-        </div>
+        </div> -->
 
-        <div class="flex flex-wrap gap-2 mt-4">
+        <!-- <div class="flex flex-wrap gap-2 mt-4">
           <button 
           *ngFor="let size of product.sizes; let i"
           [ngClass]="selectedSize == i ? 'h-23 w-23 py-2 w-1/4 border-2 border-[#3c64a9] bg-[#3c64a9] text-white transitiion-all duration-150':
@@ -90,15 +90,21 @@
               {{size}}
             </span>
           </button>
-        </div>
+        </div> -->
 
         <div class="w-full flex flex-col lg:flex-row gap-4 mt-6">
-            <div *ngIf="product.stock=='Out of stock'" class="py-4 px-10 text-center font-semibold text-yellow-600 text-white">
-                NOT AVAILABLE
-          </div>
+          <!-- <div *ngIf="product.stock=='Out of stock'" class="py-4 px-10 text-center font-semibold text-yellow-600 text-white">
+              NOT AVAILABLE
+          </div> -->
           <ng-template #addtocart>
-            <button 
+            <!-- <button 
             *ngIf="product.stock=='In stock'"
+            class="py-4 px-10 bg-gray-800 text-white"
+            (click)="addToCart(product)">
+              <i title="Shopping Cart" class="fa-solid fa-bag-shopping mr-2"></i>
+              ADD TO CART
+            </button> -->
+            <button
             class="py-4 px-10 bg-gray-800 text-white"
             (click)="addToCart(product)">
               <i title="Shopping Cart" class="fa-solid fa-bag-shopping mr-2"></i>
